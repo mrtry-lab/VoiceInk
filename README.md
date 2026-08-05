@@ -1,3 +1,7 @@
+> **このリポジトリは [Beingpax/VoiceInk](https://github.com/Beingpax/VoiceInk) を fork し、自分用にカスタムして運用しているものです。**
+
+---
+
 <div align="center">
   <img src="VoiceInk/Assets.xcassets/AppIcon.appiconset/256-mac.png" width="180" height="180" />
   <h1>VoiceInk</h1>
