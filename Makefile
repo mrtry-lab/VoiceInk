@@ -4,7 +4,18 @@ WHISPER_CPP_DIR := $(DEPS_DIR)/whisper.cpp
 FRAMEWORK_PATH := $(WHISPER_CPP_DIR)/build-apple/whisper.xcframework
 LOCAL_DERIVED_DATA := $(CURDIR)/.local-build
 
-.PHONY: all clean whisper setup build local check healthcheck help dev run release release-setup
+# Load machine-local, gitignored configuration if present (see .env.example).
+# Keeps personal values (e.g. which signing identity to use) out of the public repo.
+-include .env
+
+# Code-signing identity name matched (via `security find-identity`) by `make signed`.
+# A real Developer identity gives a stable code-signing designated requirement, so
+# macOS TCC (Accessibility etc.) keeps its grant across rebuilds — unlike ad-hoc
+# (`make local`), whose cdhash changes every build and invalidates the grant.
+# Override in .env; falls back to "Apple Development" when unset.
+SIGN_IDENTITY ?= Apple Development
+
+.PHONY: all clean whisper setup build local signed check healthcheck help dev run release release-setup
 
 # Default target
 all: check build
@@ -76,6 +87,66 @@ local: check setup
 		exit 1; \
 	fi
 
+# Build with Apple Development signing and install to /Applications.
+# Gives a stable code-signing identity so macOS keeps Accessibility / other TCC
+# grants across rebuilds. Requires an Apple Development certificate in the keychain.
+signed: check setup
+	@echo "Building VoiceInk (ad-hoc), then re-signing with an '$(SIGN_IDENTITY)' identity..."
+	@SIGN_HASH="$$(security find-identity -v -p codesigning | awk '/$(SIGN_IDENTITY)/{print $$2; exit}')"; \
+	if [ -z "$$SIGN_HASH" ]; then \
+		echo "Error: No '$(SIGN_IDENTITY)' code-signing identity found in the keychain."; \
+		echo "       Install an Apple Development certificate (Xcode > Settings > Accounts) and retry."; \
+		exit 1; \
+	fi; \
+	echo "Using code-signing identity: $$SIGN_HASH"
+	@rm -rf "$(LOCAL_DERIVED_DATA)"
+	xcodebuild -project VoiceInk.xcodeproj -scheme VoiceInk -configuration Debug \
+		-derivedDataPath "$(LOCAL_DERIVED_DATA)" \
+		-xcconfig LocalBuild.xcconfig \
+		-skipPackagePluginValidation \
+		-skipMacroValidation \
+		CODE_SIGN_IDENTITY="-" \
+		CODE_SIGNING_REQUIRED=NO \
+		CODE_SIGNING_ALLOWED=YES \
+		DEVELOPMENT_TEAM="" \
+		CODE_SIGN_ENTITLEMENTS="$(CURDIR)/VoiceInk/VoiceInk.local.entitlements" \
+		SWIFT_ACTIVE_COMPILATION_CONDITIONS='$$(inherited) LOCAL_BUILD' \
+		build
+	@APP_PATH="$(LOCAL_DERIVED_DATA)/Build/Products/Debug/VoiceInk.app" && \
+	ENT="$(CURDIR)/VoiceInk/VoiceInk.local.entitlements" && \
+	SIGN_HASH="$$(security find-identity -v -p codesigning | awk '/$(SIGN_IDENTITY)/{print $$2; exit}')" && \
+	if [ -d "$$APP_PATH" ]; then \
+		echo "Re-signing bundle inside-out with $$SIGN_HASH ..."; \
+		for dylib in "$$APP_PATH"/Contents/MacOS/*.dylib; do \
+			[ -e "$$dylib" ] && codesign --force --timestamp=none --sign "$$SIGN_HASH" "$$dylib"; \
+		done; \
+		for fw in "$$APP_PATH"/Contents/Frameworks/*.framework; do \
+			[ -e "$$fw" ] && codesign --force --deep --timestamp=none --sign "$$SIGN_HASH" "$$fw"; \
+		done; \
+		for xpc in "$$APP_PATH"/Contents/XPCServices/*.xpc; do \
+			[ -e "$$xpc" ] && codesign --force --deep --timestamp=none --sign "$$SIGN_HASH" "$$xpc"; \
+		done; \
+		codesign --force --timestamp=none --entitlements "$$ENT" --sign "$$SIGN_HASH" "$$APP_PATH"; \
+		echo "Installing to /Applications/VoiceInk.app..."; \
+		osascript -e 'tell application "VoiceInk" to quit' >/dev/null 2>&1 || true; \
+		pkill -x VoiceInk >/dev/null 2>&1 || true; \
+		sleep 1; \
+		rm -rf "/Applications/VoiceInk.app"; \
+		ditto "$$APP_PATH" "/Applications/VoiceInk.app"; \
+		xattr -cr "/Applications/VoiceInk.app"; \
+		echo ""; \
+		echo "Code signature:"; \
+		codesign -dv --verbose=2 "/Applications/VoiceInk.app" 2>&1 | grep -E "Authority=$(SIGN_IDENTITY)|TeamIdentifier|flags" || true; \
+		codesign --verify --deep --strict "/Applications/VoiceInk.app" && echo "Signature verified."; \
+		echo ""; \
+		echo "Installed: /Applications/VoiceInk.app"; \
+		echo "Run with: open /Applications/VoiceInk.app"; \
+		echo "(Stable Apple Development signature — TCC grants survive rebuilds.)"; \
+	else \
+		echo "Error: Could not find built VoiceInk.app at $$APP_PATH"; \
+		exit 1; \
+	fi
+
 # Run application
 run:
 	@if [ -d "$$HOME/Downloads/VoiceInk.app" ]; then \
@@ -118,7 +189,8 @@ help:
 	@echo "  whisper            Clone and build whisper.cpp XCFramework"
 	@echo "  setup              Copy whisper XCFramework to VoiceInk project"
 	@echo "  build              Build the VoiceInk Xcode project"
-	@echo "  local              Build for local use (no Apple Developer certificate needed)"
+	@echo "  local              Build for local use (ad-hoc, no Apple Developer certificate needed)"
+	@echo "  signed             Build with Apple Development signing and install to /Applications"
 	@echo "  run                Launch the built VoiceInk app"
 	@echo "  dev                Build and run the app (for development)"
 	@echo "  release            Build DMG and Appcast using release-notes/<version>.html"
