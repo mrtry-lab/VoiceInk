@@ -603,7 +603,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld 個のAI整形モデル"
+            "value": "%lld Enhancement models"
           }
         },
         "zh-Hans": {
@@ -662,7 +662,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%lld 件の文字起こしモデル"
+            "value": "%lld Transcription models"
           }
         },
         "zh-Hans": {
@@ -1115,7 +1115,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "選択中の文字起こし %lld 件"
+            "value": "%lld selected transcripts"
           }
         },
         "zh-Hans": {
@@ -2297,7 +2297,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI整形"
+            "value": "Enhancement"
           }
         },
         "zh-Hans": {
@@ -3031,7 +3031,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタムAI整形モデルを追加"
+            "value": "Add Custom Enhancement Model"
           }
         },
         "zh-Hans": {
@@ -3053,7 +3053,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタム文字起こしモデルを追加"
+            "value": "Add Custom Transcription Model"
           }
         },
         "zh-Hans": {
@@ -3364,7 +3364,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI整形モデルを追加"
+            "value": "Add enhancement model"
           }
         },
         "zh-Hans": {
@@ -3519,7 +3519,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしモデルを追加"
+            "value": "Add transcription model"
           }
         },
         "zh-Hans": {
@@ -4806,7 +4806,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こし履歴を自動削除"
+            "value": "Auto-delete Transcript History"
           }
         },
         "zh-Hans": {
@@ -4918,7 +4918,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "利用可能なAI整形モデル"
+            "value": "Available Enhancement Models"
           }
         },
         "zh-Hans": {
@@ -4962,7 +4962,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "利用可能な文字起こしモデル"
+            "value": "Available Transcription Models"
           }
         },
         "zh-Hans": {
@@ -4991,6 +4991,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "适用于配备 Apple 芯片且内存至少为 16 GB 的 Mac。"
+          }
+        }
+      }
+    },
+    "Averaging %@ per session.": {
+      "localizations": {
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 回あたり平均 %@。"
           }
         }
       }
@@ -5326,7 +5336,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしをキャンセル"
+            "value": "Cancel transcription"
           }
         },
         "zh-Hans": {
@@ -6171,7 +6181,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしモデルを設定"
+            "value": "Configure Transcription Model"
           }
         },
         "zh-Hans": {
@@ -6598,7 +6608,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "最後の文字起こしをコピー"
+            "value": "Copy Last Transcription"
           }
         },
         "zh-Hans": {
@@ -6666,7 +6676,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしをコピー"
+            "value": "Copy transcript"
           }
         },
         "zh-Hans": {
@@ -7044,7 +7054,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタム AI 整形モデル"
+            "value": "Custom Enhancement Models"
           }
         },
         "zh-Hans": {
@@ -7126,7 +7136,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタム文字起こしモデル"
+            "value": "Custom Transcription Models"
           }
         },
         "zh-Hans": {
@@ -7675,7 +7685,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタムAI整形モデルを削除"
+            "value": "Delete Custom Enhancement Model"
           }
         },
         "zh-Hans": {
@@ -8099,7 +8109,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%3$@ で %1$@、%2$@ 語を音声入力しました。"
+            "value": "%1$@ を音声入力しました。"
           }
         },
         "zh-Hans": {
@@ -8129,7 +8139,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ を音声入力しました。%@ %@ に相当します。"
+            "value": "%1$@ を音声入力しました。"
           }
         },
         "zh-Hans": {
@@ -8159,7 +8169,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ を音声入力しました（%@ 相当）。"
+            "value": "%1$@ を音声入力しました。"
           }
         },
         "zh-Hans": {
@@ -8991,7 +9001,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタムAI整形モデルを編集"
+            "value": "Edit Custom Enhancement Model"
           }
         },
         "zh-Hans": {
@@ -9013,7 +9023,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタム文字起こしモデルを編集"
+            "value": "Edit Custom Transcription Model"
           }
         },
         "zh-Hans": {
@@ -9364,7 +9374,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "整形"
+            "value": "Enhancement"
           }
         },
         "zh-Hans": {
@@ -9386,7 +9396,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI整形済み"
+            "value": "Enhanced"
           }
         },
         "zh-Hans": {
@@ -9409,7 +9419,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI整形"
+            "value": "Enhancement"
           }
         },
         "zh-Hans": {
@@ -9431,7 +9441,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI 整形モデル"
+            "value": "Enhancement Model"
           }
         },
         "zh-Hans": {
@@ -9453,7 +9463,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI 整形モデル"
+            "value": "Enhancement Models"
           }
         },
         "zh-Hans": {
@@ -9475,7 +9485,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI 整形設定"
+            "value": "Enhancement Settings"
           }
         },
         "zh-Hans": {
@@ -9497,7 +9507,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI整形時間"
+            "value": "Enhancement Time"
           }
         },
         "zh-Hans": {
@@ -9585,7 +9595,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "整形中"
+            "value": "Enhancing"
           }
         },
         "zh-Hans": {
@@ -9607,7 +9617,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "録音をAI整形中"
+            "value": "Enhancing recording"
           }
         },
         "zh-Hans": {
@@ -13272,7 +13282,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ローカルAI整形サービス"
+            "value": "Local Enhancement Services"
           }
         },
         "zh-Hans": {
@@ -14172,7 +14182,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "マイAI整形モデル"
+            "value": "My Enhancement Model"
           }
         },
         "zh-Hans": {
@@ -14344,7 +14354,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタムAI整形モデルなし"
+            "value": "No Custom Enhancement Models"
           }
         },
         "zh-Hans": {
@@ -14366,7 +14376,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "カスタム文字起こしモデルがありません"
+            "value": "No Custom Transcription Models"
           }
         },
         "zh-Hans": {
@@ -14682,7 +14692,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI整形モデルがありません"
+            "value": "No enhancement models"
           }
         },
         "zh-Hans": {
@@ -14706,7 +14716,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI整形の所要時間データがありません"
+            "value": "No enhancement timings"
           }
         },
         "zh-Hans": {
@@ -15302,7 +15312,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしモデルが選択されていません"
+            "value": "No transcription model selected"
           }
         },
         "zh-Hans": {
@@ -15326,7 +15336,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしモデルなし"
+            "value": "No transcription models"
           }
         },
         "zh-Hans": {
@@ -15394,7 +15404,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしのタイミング情報がありません"
+            "value": "No transcription timings"
           }
         },
         "zh-Hans": {
@@ -15416,7 +15426,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしがありません"
+            "value": "No transcriptions"
           }
         },
         "zh-Hans": {
@@ -15945,7 +15955,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "デバイス上での文字起こしクリーンアップ"
+            "value": "On-device transcript cleanup"
           }
         },
         "zh-Hans": {
@@ -16484,7 +16494,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "最後のAI整形済み文字起こしをペースト"
+            "value": "Paste Last Enhanced Transcription"
           }
         },
         "zh-Hans": {
@@ -16506,7 +16516,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "最後の文字起こしをペースト"
+            "value": "Paste Last Transcription"
           }
         },
         "zh-Hans": {
@@ -16528,7 +16538,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "最後の文字起こしを貼り付け（AI 整形版）"
+            "value": "Paste Last Transcription (Enhanced)"
           }
         },
         "zh-Hans": {
@@ -16550,7 +16560,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "最後の文字起こしをペースト（原文）"
+            "value": "Paste Last Transcription (Original)"
           }
         },
         "zh-Hans": {
@@ -17398,7 +17408,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "選択したプロンプトで再整形"
+            "value": "Re-enhance with selected prompt"
           }
         },
         "zh-Hans": {
@@ -17556,7 +17566,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "最近の文字起こし"
+            "value": "Recent Transcripts"
           }
         },
         "zh-Hans": {
@@ -18814,7 +18824,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "この音声を再文字起こし"
+            "value": "Retranscribe this audio"
           }
         },
         "zh-Hans": {
@@ -18902,7 +18912,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "前回の文字起こしを再試行"
+            "value": "Retry Last Transcription"
           }
         },
         "zh-Hans": {
@@ -19181,7 +19191,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしを保存"
+            "value": "Save Transcription"
           }
         },
         "zh-Hans": {
@@ -19403,7 +19413,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしを検索"
+            "value": "Search transcriptions"
           }
         },
         "zh-Hans": {
@@ -20604,7 +20614,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "短い文字起こしをスキップ"
+            "value": "Skip short transcriptions"
           }
         },
         "zh-Hans": {
@@ -20933,7 +20943,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしを開始"
+            "value": "Start transcription"
           }
         },
         "zh-Hans": {
@@ -23019,7 +23029,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こし"
+            "value": "Transcription"
           }
         },
         "zh-Hans": {
@@ -23041,7 +23051,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こし中"
+            "value": "Transcribing"
           }
         },
         "zh-Hans": {
@@ -23063,7 +23073,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "録音を文字起こし中"
+            "value": "Transcribing recording"
           }
         },
         "zh-Hans": {
@@ -23108,7 +23118,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしのクリーンアップ"
+            "value": "Transcript Cleanup"
           }
         },
         "zh-Hans": {
@@ -23132,7 +23142,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こし履歴"
+            "value": "Transcript History"
           }
         },
         "zh-Hans": {
@@ -23156,7 +23166,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "%@ の文字起こし"
+            "value": "Transcript from %@"
           }
         },
         "zh-Hans": {
@@ -23178,7 +23188,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こし"
+            "value": "Transcription"
           }
         },
         "zh-Hans": {
@@ -23244,7 +23254,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしの書式"
+            "value": "Transcription Formatting"
           }
         },
         "zh-Hans": {
@@ -23266,7 +23276,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしの言語"
+            "value": "Transcription Language"
           }
         },
         "zh-Hans": {
@@ -23288,7 +23298,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしモデル"
+            "value": "Transcription Model"
           }
         },
         "zh-Hans": {
@@ -23310,7 +23320,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こしモデル"
+            "value": "Transcription Models"
           }
         },
         "zh-Hans": {
@@ -23332,7 +23342,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "文字起こし時間"
+            "value": "Transcription Time"
           }
         },
         "zh-Hans": {
@@ -23548,7 +23558,7 @@
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AI 整形を試す"
+            "value": "Try Enhancement"
           }
         },
         "zh-Hans": {
