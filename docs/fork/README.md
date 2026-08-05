@@ -4,6 +4,8 @@
 
 追従の作業対象は **本家も編集するファイルへのパッチ（衝突面）** だけ。fork 固有の新規ファイルはマージで衝突しないので、存在確認で済む。この 2 分類を各ページの `upstream_files` / `fork_files` に必ず記録する。
 
+このレジストリは、Karpathy の [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) のアイデア（LLM が継続的に維持する index / append-only log / トピック別ページ、および lint による陳腐化対策）を、本家追従という目的に応用したもの。ここでは [README.md](README.md) が index、[log.md](log.md) が log、[changes/](changes/) がトピック別ページ、[SYNC.md](SYNC.md) が追従（と lint）の運用にあたる。
+
 ## 使い方
 
 - 変更したら [log.md](log.md) に 1 行追記する。実質的な変更は [changes/](changes/) にページを持つが、**既にある機能への改修は新規ページを作らず既存ページに追記する**（本文追記・`commits` 追加・`last_reconciled` 更新・触ったファイルを `upstream_files`/`fork_files` に追加）。新規ページは真に新しい分岐領域のときだけ。維持規約は [../../CLAUDE.md](../../CLAUDE.md) の「Fork 変更レジストリの維持」を参照。

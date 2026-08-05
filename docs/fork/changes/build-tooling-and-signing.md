@@ -7,6 +7,7 @@ upstream_files:
 fork_files:
   - .env.example
   - CLAUDE.md
+  - docs/build.md
 commits: [f30eb28, 841f132]
 last_reconciled: 2026-08-05
 ---
@@ -19,7 +20,7 @@ last_reconciled: 2026-08-05
 
 - `Makefile` の `signed` ターゲット: ad-hoc でビルド → `security find-identity` で解決した証明書ハッシュで framework/XPC/dylib/本体を内側から再署名 → `/Applications` へ導入。
 - `.gitignore` に `.env` を追加、`.env.example` はテンプレート。
-- `CLAUDE.md` にビルド/署名/TCC の説明。
+- ビルド/署名/TCC の手順は [../../build.md](../../build.md) に置く（常時 context に載せる必要がないため CLAUDE.md からは分離し、CLAUDE.md はリンクのみ）。
 
 ## 追従時の注意
 

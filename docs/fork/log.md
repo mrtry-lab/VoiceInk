@@ -2,6 +2,8 @@
 
 新しいものを上に。1 行 = 1 変更。書式は `## [日付] slug | commit | 要約`。実質的な変更は [changes/](changes/) にページを持つ。
 
+## [2026-08-05] build-tooling-and-signing | (未コミット) | ビルド/署名手順を CLAUDE.md から docs/build.md へ分離（CLAUDE.md はリンクのみ）。レジストリ設計が LLM Wiki ベースである旨を明記 → [changes/build-tooling-and-signing.md](changes/build-tooling-and-signing.md)
+
 ## [2026-08-05] silence-trim | 8e7a1d3 | クラウド送信前に同梱 VAD で無音を除去（実測81%削減）。新規 CloudAudioSilenceTrimmer.swift + CloudTranscriptionService/ModelSettingsPanel/xcstrings をパッチ → [changes/silence-trim.md](changes/silence-trim.md)
 
 ## [2026-08-05] readme-fork-note | fa633e4 | README 先頭に fork 運用の注記を追加
