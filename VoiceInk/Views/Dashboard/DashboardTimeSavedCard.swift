@@ -4,6 +4,7 @@ struct DashboardTimeSavedSummary: Equatable {
     let timeSaved: TimeInterval
     let wordCount: Int
     let sessionCount: Int
+    var averageProcessingLatency: TimeInterval? = nil
 
     var hasData: Bool {
         sessionCount > 0 || wordCount > 0

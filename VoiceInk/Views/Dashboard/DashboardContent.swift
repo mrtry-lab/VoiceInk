@@ -214,7 +214,8 @@ struct DashboardContent: View {
         return DashboardTimeSavedSummary(
             timeSaved: DashboardTimeSaving.timeSaved(words: selectedTotals.words, duration: selectedTotals.duration),
             wordCount: selectedTotals.words,
-            sessionCount: selectedTotals.count
+            sessionCount: selectedTotals.count,
+            averageProcessingLatency: statsSummary.averageProcessingLatency(for: selectedInsightPeriod)
         )
     }
 
@@ -753,7 +754,13 @@ struct DashboardContent: View {
             return String(localized: "Your first milestone appears after one session.")
         }
 
-        return formattedProgressBenchmarkText
+        var subtext = formattedProgressBenchmarkText
+        if let latency = statsSummary.averageProcessingLatency(for: .allTime) {
+            let latencyText = Formatters.formattedPreciseDuration(latency)
+            subtext += String(localized: "Averaging \(latencyText) per session.")
+        }
+
+        return subtext
     }
 
     // MARK: - Computed Metrics

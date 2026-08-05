@@ -68,6 +68,13 @@ struct DashboardProductivitySummaryStrip: View {
                 value: summary.hasData ? Formatters.formattedCompactNumber(summary.sessionCount) : "--",
                 systemName: "mic"
             )
+            metricCell(
+                title: "Avg. latency",
+                value: summary.hasData
+                    ? (summary.averageProcessingLatency.map { Formatters.formattedPreciseDuration($0) } ?? "--")
+                    : "--",
+                systemName: "timer"
+            )
         }
     }
 

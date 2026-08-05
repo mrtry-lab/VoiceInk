@@ -384,6 +384,38 @@ extension DashboardStatsSummary {
             return allTimePeakHours
         }
     }
+
+    /// Average per-session processing latency, combining transcription (send → result)
+    /// and AI enhancement. Each kind's average is weighted by its session count, then the
+    /// two averages are summed. Returns nil when no latency was recorded for either kind.
+    func averageProcessingLatency(for period: DashboardInsightPeriod) -> TimeInterval? {
+        let performance = modelPerformance(for: period)
+
+        func weightedAverage(for kind: ModelInsightKind) -> TimeInterval? {
+            var sessions = 0
+            var weighted: TimeInterval = 0
+            for entry in performance where entry.kind == kind {
+                guard let average = entry.averageProcessingDuration else { continue }
+                sessions += entry.sessionCount
+                weighted += average * Double(entry.sessionCount)
+            }
+            return sessions > 0 ? weighted / Double(sessions) : nil
+        }
+
+        let transcription = weightedAverage(for: .transcription)
+        let enhancement = weightedAverage(for: .enhancement)
+
+        switch (transcription, enhancement) {
+        case let (transcription?, enhancement?):
+            return transcription + enhancement
+        case let (transcription?, nil):
+            return transcription
+        case let (nil, enhancement?):
+            return enhancement
+        case (nil, nil):
+            return nil
+        }
+    }
 }
 
 enum DashboardTimeSaving {
