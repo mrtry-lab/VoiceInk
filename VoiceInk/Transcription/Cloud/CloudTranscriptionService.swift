@@ -47,7 +47,16 @@ class CloudTranscriptionService: TranscriptionService {
     func transcribe(audioURL: URL, model: any TranscriptionModel, context: TranscriptionRequestContext) async throws
         -> String
     {
-        let audioData = try loadAudioData(from: audioURL)
+        // Reduce the uploaded audio by removing silence, when a trimmed copy is produced.
+        let uploadURL = await silenceTrimmedUploadURL(for: audioURL)
+        let usesTrimmedCopy = uploadURL != audioURL
+        defer {
+            if usesTrimmedCopy {
+                try? FileManager.default.removeItem(at: uploadURL)
+            }
+        }
+
+        // Keep the original file name (and extension) even when uploading a trimmed copy.
         let fileName = audioURL.lastPathComponent
         let language = selectedLanguage(from: context)
 
@@ -57,13 +66,14 @@ class CloudTranscriptionService: TranscriptionService {
                     throw CloudTranscriptionError.unsupportedProvider
                 }
                 return try await openAICompatibleService.transcribe(
-                    audioURL: audioURL, model: customModel, context: context)
+                    audioURL: uploadURL, model: customModel, context: context)
             }
 
             guard let cloudProvider = CloudProviderRegistry.provider(for: model.provider) else {
                 throw CloudTranscriptionError.unsupportedProvider
             }
             let apiKey = try requireAPIKey(forProvider: cloudProvider.providerKey)
+            let audioData = try loadAudioData(from: uploadURL)
             return try await cloudProvider.transcribe(
                 audioData: audioData,
                 fileName: fileName,
@@ -79,6 +89,19 @@ class CloudTranscriptionService: TranscriptionService {
         } catch {
             throw CloudTranscriptionError.networkError(error)
         }
+    }
+
+    /// Returns a temporary silence-trimmed copy of the recording when Voice Activity
+    /// Detection is enabled and the bundled VAD model produces a smaller file; otherwise
+    /// returns the original URL unchanged.
+    private func silenceTrimmedUploadURL(for audioURL: URL) async -> URL {
+        // Match the @AppStorage default (true): treat an unset key as enabled, since it is
+        // only written to UserDefaults once the user toggles the switch.
+        let isVADEnabled = UserDefaults.standard.object(forKey: "IsVADEnabled") as? Bool ?? true
+        guard isVADEnabled else { return audioURL }
+        guard let vadModelPath = await VADModelManager.shared.getModelPath() else { return audioURL }
+        return await CloudAudioSilenceTrimmer.trimmedAudioURL(from: audioURL, vadModelPath: vadModelPath)
+            ?? audioURL
     }
 
     // MARK: - Helpers

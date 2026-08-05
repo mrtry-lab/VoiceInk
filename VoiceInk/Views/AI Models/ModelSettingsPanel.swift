@@ -157,7 +157,7 @@ private struct AdvancedModelSettingsSection: View {
             Toggle(isOn: $isVADEnabled) {
                 HStack(spacing: 4) {
                     Text("Voice Activity Detection (VAD)")
-                    InfoTip("Detect speech segments and filter out silence to improve accuracy of local models.")
+                    InfoTip("Detect speech segments and filter out silence. Improves local model accuracy and reduces the audio uploaded to cloud providers.")
                 }
             }
             .toggleStyle(.switch)
